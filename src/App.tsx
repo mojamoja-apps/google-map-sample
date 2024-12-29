@@ -10,6 +10,9 @@ const render = (status: Status) => {
 };
 
 function App() {
+
+  console.log("MODE:", import.meta.env.VITE_PUBLIC_KEY);
+
   /** 東京駅の座標 */
   const defaultCenter = { lat: 35.681236, lng: 139.767125 };
 
