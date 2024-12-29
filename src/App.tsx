@@ -83,12 +83,12 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col h-screen">
-      <h1 className="text-4xl font-bold text-blue-500">
-        全国の駅を表示 Googleマップサンプル
+    <div className="h-screen">
+      <h1 className="text-4xl font-bold text-blue-500 m-2">
+        Googleマップで全国の駅を表示
       </h1>
 
-      <div className="flex-grow h-70">
+      <div className="h-3/4">
         <Wrapper
           apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
           render={render}
@@ -110,7 +110,7 @@ function App() {
         </Wrapper>
       </div>
 
-      <div className="flex flex-col items-center justify-center h-30 p-4 bg-gray-100">
+      <div className="items-center justify-center h-30 p-4 bg-gray-100">
         <div className="flex flex-row items-center w-full max-w-md">
           <input
             type="text"
@@ -127,17 +127,15 @@ function App() {
             検索
           </button>
         </div>
-        <ul>
-          <li className="text-lg text-gray-700">
-            Go言語でAPIを作成し、Reactでフロントエンドを作成しました。
+        <ul className="text-lg text-gray-700">
+          <li>
+            全国の各駅にマーカーを表示します。クリックすると駅名と住所が表示されます。
           </li>
-          <li className="text-lg text-gray-700">
-            Google Maps APIを使用して、全国の駅を表示しています。
-          </li>
-          <li className="text-lg text-gray-700">
-            駅名や地名で検索することができます。
-          </li>
-          <li className="text-lg text-gray-700">
+          <li>駅名や地名で検索することができます。</li>
+          <li>・フロントエンド：Amazon AWS EC2、React</li>
+          <li>・バックエンド：Amazon AWS EC2、go言語</li>
+          <li>・データベース：Amazon RDS、MySQL</li>
+          <li>
             駅の情報は、
             <a
               href="https://ekidata.jp/"
@@ -149,8 +147,15 @@ function App() {
             の無料データを使用しています。
           </li>
         </ul>
+        <a
+          href="https://mojamoja-apps.com/"
+          target="_blank"
+          className="text-blue-500 underline"
+        >
+          開発：mojamoja apps
+        </a>
       </div>
-      <p className="text-center text-gray-500 m-2">© 2024 mojamoja apps</p>
+      <p className="text-center text-gray-500 m-2">© 2025 mojamoja apps</p>
     </div>
   );
 }
