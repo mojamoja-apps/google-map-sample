@@ -41,7 +41,7 @@ function App() {
     sw_lng: number
   ) {
     axios
-      .get("http://192.168.1.2:8080/station", {
+      .get(import.meta.env.VITE_API_URL, {
         params: {
           ne_lat,
           ne_lng,
