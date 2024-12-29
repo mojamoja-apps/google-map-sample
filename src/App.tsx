@@ -1,7 +1,7 @@
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import { Map } from "./Map";
 import { Marker } from "./Marker";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import axios from "axios";
 import { MarkerDataType } from "./types";
 
@@ -14,6 +14,8 @@ function App() {
   const defaultCenter = { lat: 35.681236, lng: 139.767125 };
 
   const [positions, setPositions] = useState<MarkerDataType[]>([]);
+  const searchTextRef = useRef<HTMLInputElement>(null);
+  const mapRef = useRef<google.maps.Map | null>(null);
 
   let boundsChangedTimeout: number;
   const handleBoundsChanged = (bounds: google.maps.LatLngBounds) => {
@@ -63,6 +65,23 @@ function App() {
       });
   }
 
+  const handleSearch = async () => {
+    const searchText = searchTextRef.current?.value;
+    if (!searchText) {
+      alert("検索テキストを入力してください");
+      return;
+    }
+
+    const geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ address: searchText }, (results, status) => {
+      if (status === "OK" && results) {
+        mapRef.current?.setCenter(results[0].geometry.location);
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
+  };
+
   return (
     <div className="flex flex-col h-screen">
       <h1 className="text-4xl font-bold text-blue-500">
@@ -78,6 +97,7 @@ function App() {
             style={{ width: "100%", height: "100%" }}
             center={defaultCenter}
             onBoundsChanged={handleBoundsChanged}
+            ref={mapRef}
           >
             {positions.map(({ title, zip, address, ...position }, index) => (
               <Marker
@@ -97,10 +117,12 @@ function App() {
             id="searchText"
             placeholder="地名や駅名を入力"
             className="mr-2 p-2 border border-gray-300 rounded flex-grow"
+            ref={searchTextRef}
           />
           <button
             id="moveCenter"
             className="px-4 py-2 bg-blue-500 text-white rounded"
+            onClick={handleSearch}
           >
             検索
           </button>
@@ -128,6 +150,7 @@ function App() {
           </li>
         </ul>
       </div>
+      <p className="text-center text-gray-500 m-2">© 2024 mojamoja apps</p>
     </div>
   );
 }
