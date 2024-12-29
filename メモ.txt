@@ -1,0 +1,18 @@
+
+参考ページ
+https://zenn.dev/luvmini511/articles/ac13ff28238dcb
+
+npm create vite@latest google-map-sample --template react
+
+cd google-map-sample
+npm install
+
+# 起動
+npm run dev
+
+http://localhost:5173/
+
+
+
+npm install @googlemaps/react-wrapper @types/google.maps
+npm install axios
