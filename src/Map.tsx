@@ -31,7 +31,10 @@ export const Map = forwardRef<google.maps.Map | null, MapProps>(
 
     /** マーカー吹き出し */
     const infoWindowRef = useRef<google.maps.InfoWindow | null>(
-      new google.maps.InfoWindow({ maxWidth: 200 })
+      new google.maps.InfoWindow({
+        maxWidth: 200,
+        disableAutoPan: true, // 吹き出し表示時に、自動でマップを移動させない
+      })
     );
 
     useImperativeHandle(ref, () => map as google.maps.Map, [map]);
