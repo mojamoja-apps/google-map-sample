@@ -10,7 +10,6 @@ const render = (status: Status) => {
 };
 
 function App() {
-
   console.log("MODE:", import.meta.env.VITE_PUBLIC_KEY);
 
   /** 東京駅の座標 */
@@ -87,7 +86,7 @@ function App() {
 
   return (
     <div className="h-screen">
-      <h1 className="text-4xl font-bold text-blue-500 m-2">
+      <h1 className="text-xl sm:text-4xl font-bold text-blue-500 m-2">
         Googleマップで全国の駅を表示
       </h1>
 
@@ -130,16 +129,20 @@ function App() {
             検索
           </button>
         </div>
-        <ul className="text-lg text-gray-700">
-          <li>
-            全国の各駅にマーカーを表示します。クリックすると駅名と住所が表示されます。
-          </li>
-          <li>駅名や地名で検索することができます。</li>
+        <div className="text-lg text-gray-700">
+          全国の各駅にマーカーを表示します。クリックすると駅名と住所が表示されます。
+          <br />
+          駅名や地名で検索することができます。
+        </div>
+        <ul className="text-lg text-gray-700 my-5">
+          <li>使用技術</li>
           <li>・フロントエンド：Amazon AWS EC2、React</li>
           <li>・バックエンド：Amazon AWS EC2、go言語</li>
+          <li>・Let's Encryptを使用した無料SSL。自動で証明書の更新。</li>
           <li>・データベース：Amazon RDS、MySQL</li>
+          <li>・デプロイ：github actionsを使った自動デプロイ</li>
           <li>
-            駅の情報は、
+            駅の情報：
             <a
               href="https://ekidata.jp/"
               target="_blank"
@@ -147,16 +150,17 @@ function App() {
             >
               駅データ.jp
             </a>
-            の無料データを使用しています。
           </li>
         </ul>
-        <a
-          href="https://mojamoja-apps.com/"
-          target="_blank"
-          className="text-blue-500 underline"
-        >
-          開発：mojamoja apps
-        </a>
+        <div>
+          <a
+            href="https://mojamoja-apps.com/"
+            target="_blank"
+            className="text-blue-500 underline"
+          >
+            開発：mojamoja apps
+          </a>
+        </div>
       </div>
       <p className="text-center text-gray-500 m-2">© 2025 mojamoja apps</p>
     </div>
