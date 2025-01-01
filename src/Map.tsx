@@ -42,7 +42,7 @@ export const Map = forwardRef<google.maps.Map | null, MapProps>(
           center: options.center,
           zoom: options.zoom || 15,
           minZoom: 12,
-          gestureHandling: "greedy",
+          // gestureHandling: "greedy",  // “地図を移動させるには指2本で操作します”の回避策
         };
         setMap(new window.google.maps.Map(mapRef.current, option));
       }
