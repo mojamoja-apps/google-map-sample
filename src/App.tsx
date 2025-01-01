@@ -86,7 +86,7 @@ function App() {
 
   return (
     <div className="h-screen">
-      <h1 className="text-xl sm:text-4xl font-bold text-blue-500 m-2">
+      <h1 className="text-lg sm:text-4xl font-bold text-blue-500 sm:m-2 m-1">
         Googleマップで全国の駅を表示
       </h1>
 
