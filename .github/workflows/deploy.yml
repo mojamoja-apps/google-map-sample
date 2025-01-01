@@ -31,4 +31,4 @@ jobs:
           echo "$SSH_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H 54.95.14.178 >> ~/.ssh/known_hosts
-          scp -r build/* ec2-user@54.95.14.178:/var/www/html/
+          scp -r dist/* ec2-user@54.95.14.178:/var/www/html/
